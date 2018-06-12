@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using AspNetCoreTest.Services;
 using AspNetCoreTest.Services.Interfaces;
 using DAL.Core.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -27,10 +31,10 @@ namespace AspNetCoreTest.Controllers
         {
 			//here we get all blog posts
             return new string[] { "value1", "value2" };
-        }
+        }	   
 
-        // GET api/values/5
-        [HttpGet("{byPage}")]
+	    // GET api/values/5
+		[HttpGet("{byPage}")]
         public List<Post> Get(int pageIndex)
         {
 			//here we try implement some sort of paging

@@ -1,9 +1,29 @@
 @{
-    ViewData["Title"] = "Home Page";
+	Layout = "_Layout";
+	ViewData["Title"] = "Home Page";
 }
 
-<div id="react-app" asp-prerender-module="ClientApp/dist/main-server">Loading...</div>
+<div id="container">
+	<div>
+		Blog posts
+	</div>
+	<div>
+		Search
+		<input id="name" type="text" name="search" value="" />
+		<button data-bind="click: search.bind(this, document.getElementById('name').value)">Solr</button>
+		<button data-bind="click: searchsql.bind(this, document.getElementById('name').value)">Sql</button>
+	</div>
+	<div data-bind="foreach:blogposts">
+		<h1 data-bind="text:title"></h1>
+		<p data-bind="text:text"></p>
+
+		<p data-bind="if:author"><span data-bind="text:author.lastName"></span></p>
+	</div>
+	
+	<div>Request was executes in <span data-bind="text:timer"></span></div>
+</div>
 
 @section scripts {
-    <script src="~/dist/main-client.js" asp-append-version="true"></script>
+
+	<script src="~/dist/main.js" asp-append-version="true"></script>
 }

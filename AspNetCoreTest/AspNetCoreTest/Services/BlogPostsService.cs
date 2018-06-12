@@ -32,5 +32,19 @@ namespace AspNetCoreTest.Services
 				}).Skip(30 * (pageNumber - 1)).Take(30).ToList();
 		    return posts;
 	    }
-    }
+
+		public List<Post> GetPageWithPost(string search)
+		{
+
+			var posts = _context.Posts.Include(x => x.Author).Where( x => x.Text.Contains(search) || x.Title.Contains(search)).Select(post => new Post()
+			{
+				ID = post.ID,
+				Title = post.Title,
+				Author = new Author() {ID = post.Author.ID, LastName = post.Author.LastName},
+				Text = post.Text,
+			}).ToList();
+
+			return posts;
+		}
+	}
 }

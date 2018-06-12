@@ -9,5 +9,7 @@ namespace AspNetCoreTest.Services.Interfaces
     public interface IBlogPostService
     {
 	    List<Post> GetPageWithPost(int pageNumber);
-    }
+
+	    List<Post> GetPageWithPost(string search);
+	}
 }

@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,19 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
-    <Content Remove="ClientApp\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="ClientApp\components\Blog.tsx" />
-    <None Remove="ClientApp\components\FindBlogPosts.tsx" />
-    <None Remove="ClientApp\containers\BlogContainer.tsx" />
-    <None Remove="ClientApp\store\Suggestion.tsx" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="ClientApp\containers\BlogContainer.jsx" />
+    <Content Remove="tsconfig.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,11 +27,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\components\Blog.jsx" />
-    <TypeScriptCompile Include="ClientApp\components\FindBlogPosts.tsx" />
-    <TypeScriptCompile Include="ClientApp\containers\BlogContainer.jsx" />
-    <TypeScriptCompile Include="ClientApp\store\Blog.ts" />
-    <TypeScriptCompile Include="ClientApp\store\Suggestion.ts" />
+    <Folder Include="Data\" />
+    <Folder Include="Models\" />
+    <Folder Include="Views\Shared\" />
+    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
